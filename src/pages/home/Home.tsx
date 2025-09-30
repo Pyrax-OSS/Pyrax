@@ -14,7 +14,7 @@ export default function Home() {
   const [version, setVersion] = useState("");
 
 useEffect(() => {
-  fetch("/.netlify/functions/version")
+  fetch("/api/version")
     .then(async (res) => {
       const text = await res.text();
       try {
@@ -40,7 +40,7 @@ useEffect(() => {
           <br /> best looking and most performant software out there for
           businesses on any budget.
         </TypographyP>
-        <p className="mt-4 font-bold text-black">{version}</p>
+        <p className="mt-4 font-bold text-zinc-700 dark:text-zinc-300">{version}</p>
       </div>
 
       <ThemeSwitcher theme={theme} setTheme={setTheme} />

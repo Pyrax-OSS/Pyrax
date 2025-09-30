@@ -7,7 +7,7 @@ export function getStoredTheme(): Theme {
   if (stored === "light" || stored === "dark" || stored === "system") {
     return stored
   }
-  return "light" // Default to light instead of system
+  return "light" 
 }
 
 export function setStoredTheme(theme: Theme): void {

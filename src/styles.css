@@ -19,10 +19,13 @@
 }
 
 body {
-  @apply m-0;
   font-family: "Regular", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 ::selection {
@@ -44,3 +47,22 @@ body {
   background: #ffffff;
   color: #000000;
 }
+
+        ::-webkit-scrollbar {
+          width: 0px;
+          height: 0px;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: transparent;
+          border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: transparent;
+        }
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        body {
+          scrollbar-width: thin;
+          scrollbar-color: transparent;
+        }

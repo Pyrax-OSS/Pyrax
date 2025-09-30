@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import {
   Outlet,
@@ -6,24 +6,43 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
+  useNavigate,
+  useLocation,
 } from '@tanstack/react-router'
 
 import './styles.css'
 
-import App from './App.tsx'
+import Dashboard from './pages/app/Index.tsx'
+import Home from './pages/home/Home.tsx'
+import NotFound from './pages/NotFound.tsx'
+import { isAppSubdomain, isMainDomain } from './constants/domains'
+
+const RootComponent = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (isMainDomain() && location.pathname !== '/') {
+      navigate({ to: '/' })
+    }
+  }, [location.pathname, navigate])
+
+  return <Outlet />
+}
+
+const IndexComponent = () => {
+  return isAppSubdomain() ? <Dashboard /> : <Home />
+}
 
 const rootRoute = createRootRoute({
-  component: () => (
-    <>
-      <Outlet />
-    </>
-  ),
+  component: RootComponent,
+  notFoundComponent: NotFound,
 })
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: App,
+  component: IndexComponent,
 })
 
 const routeTree = rootRoute.addChildren([indexRoute])
@@ -52,4 +71,3 @@ if (rootElement && !rootElement.innerHTML) {
     </StrictMode>,
   )
 }
-

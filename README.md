@@ -12,7 +12,6 @@ This is the home page and soon to be customer dashboard for purchasing and getti
 - [ ] Design and implement the database schema  
 - [ ] Add user authentication and authorization  
 - [ ] Implement rate limiting to prevent abuse  
-- [ ] Enable hosting and deployment on Vercel  
 - [ ] Implement a system for creating support tickets  
 - [ ] Add real-time synchronization for support ticket messages  
 - [ ] Implement user roles and permissions  

@@ -18,7 +18,7 @@ export default function HomeDashboard() {
           Welcome back
         </TypographyH1>
 
-        <div className="bg-zinc-950/10 dark:bg-zinc-950/20 text-sm rounded-lg p-1 dark:p-1.5">
+        <div className="bg-zinc-950/5 dark:bg-zinc-800/10 text-sm rounded-lg p-1 dark:p-1.5">
           <TypographySmall className="font-semibold text-zinc-500 dark:text-zinc-400 ml-1">
             Your Account Overview
           </TypographySmall>
@@ -53,7 +53,7 @@ export default function HomeDashboard() {
             Manage tickets and contact our team
           </TypographyMuted>
 
-          <Card className="border border-zinc-300 border-dashed dark:border-zinc-800/60 rounded-lg p-8 mt-6 dark:bg-zinc-950/20">
+          <Card className="border-dashed p-8 mt-6">
             <TypographyH4 className="text-zinc-800 dark:text-zinc-200 mb-2">
               No open tickets
             </TypographyH4>

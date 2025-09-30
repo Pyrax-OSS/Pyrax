@@ -5,3 +5,4 @@ bun.lock
 # Local Netlify folder
 .netlify
 dist/
+.env

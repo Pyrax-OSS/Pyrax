@@ -10,14 +10,19 @@
     "test": "vitest run",
     "format": "biome format",
     "lint": "biome lint",
-    "check": "biome check"
+    "check": "biome check",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "netlify dev:exec drizzle-kit migrate",
+    "db:studio": "netlify dev:exec drizzle-kit studio"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@netlify/neon": "^0.1.0",
     "@tailwindcss/vite": "4.1.13",
     "@tanstack/react-devtools": "0.7.0",
     "@tanstack/react-router": "1.132.25",
     "@tanstack/react-router-devtools": "1.132.25",
+    "drizzle-orm": "^0.44.5",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "tailwind-merge": "^3.3.1",
@@ -31,6 +36,7 @@
     "@types/react": "19.1.16",
     "@types/react-dom": "19.1.9",
     "@vitejs/plugin-react": "5.0.4",
+    "drizzle-kit": "^0.31.5",
     "jsdom": "27.0.0",
     "typescript": "^5.7.2",
     "vite": "7.1.7",

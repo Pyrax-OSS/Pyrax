@@ -3,6 +3,7 @@ import { TypographyH1, TypographyP } from "@/components/Typography";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import type { Theme } from "@/utils/theme";
 import { getStoredTheme, applyTheme, resolveTheme } from "@/utils/theme";
+import axios from "axios";
 
 export default function Home() {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -13,21 +14,19 @@ export default function Home() {
 
   const [version, setVersion] = useState("");
 
-useEffect(() => {
-  fetch("/api/version")
-    .then(async (res) => {
-      const text = await res.text();
-      try {
-        const data = JSON.parse(text);
-        return data.message ?? text;
-      } catch {
-        return text;
-      }
-    })
-    .then((ver) => setVersion(ver))
-    .catch((err) => console.error("Failed to fetch version:", err));
-}, []);
-
+  useEffect(() => {
+    axios
+      .get("/api/version")
+      .then((res) => {
+        const data = res.data;
+        if (typeof data === "object" && data !== null && "message" in data) {
+          setVersion(data.message);
+        } else {
+          setVersion(typeof data === "string" ? data : JSON.stringify(data));
+        }
+      })
+      .catch((err) => console.error("Failed to fetch version:", err));
+  }, []);
 
   return (
     <div className="bg-[#f3f4f6] text-black dark:bg-zinc-950 dark:text-white h-screen flex flex-col items-center justify-center transition-colors duration-300">

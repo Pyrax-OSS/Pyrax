@@ -9,20 +9,24 @@ import {
   useNavigate,
   useLocation,
 } from '@tanstack/react-router'
-
+import Dashboard from './app/page.tsx'
+import Home from './home/page.tsx'
+import NotFound from './components/NotFound.tsx'
+import { isAppSubdomain, isMainDomain } from './constants/config.ts'
 import './styles.css'
-
-import Dashboard from './pages/app/Index.tsx'
-import Home from './pages/home/Home.tsx'
-import NotFound from './pages/NotFound.tsx'
-import { isAppSubdomain, isMainDomain } from './constants/domains'
 
 const RootComponent = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
   useEffect(() => {
-    if (isMainDomain() && location.pathname !== '/') {
+    if (isMainDomain() && location.pathname !== '/' && !location.pathname.startsWith('/api')) {
+      navigate({ to: '/' })
+    }
+  }, [location.pathname, navigate])
+
+  useEffect(() => {
+    if (isAppSubdomain() && location.pathname !== '/') {
       navigate({ to: '/' })
     }
   }, [location.pathname, navigate])
@@ -31,7 +35,9 @@ const RootComponent = () => {
 }
 
 const IndexComponent = () => {
-  return isAppSubdomain() ? <Dashboard /> : <Home />
+  if (isAppSubdomain()) return <Dashboard />
+  if (isMainDomain()) return <Home />
+  return <Home />
 }
 
 const rootRoute = createRootRoute({

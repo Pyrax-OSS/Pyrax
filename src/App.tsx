@@ -1,4 +1,4 @@
-import { TypographyH1, TypographyP } from "@/components/typography"
+import { TypographyH1, TypographyP } from "@/components/Typography"
 import ThemeToggle from "@/components/ThemeToggle"
 
 export default function App() {

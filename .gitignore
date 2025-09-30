@@ -2,3 +2,6 @@
 node_modules/
 netlify.toml
 bun.lock
+# Local Netlify folder
+.netlify
+dist/

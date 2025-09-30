@@ -1,6 +1,6 @@
 # Pyrax
 
-Ultra simple herosection landing page for Pyrax. 
+Home page for Pyrax, nothing much more to say.
 
 ---
 

@@ -1,0 +1,4 @@
+.vscode/
+node_modules/
+netlify.toml
+bun.lock

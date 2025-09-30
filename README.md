@@ -4,7 +4,7 @@ Ultra simple herosection landing page for Pyrax.
 
 ---
 
-![Pyrax Banner](public/banner.png)
+![Pyrax Banner](./public/banner.png)
 
 ---
 

@@ -1,6 +1,6 @@
 # Pyrax
 
-Home page for Pyrax, nothing much more to say.
+Simple landing page for Pyrax & built in client product management dashboard.
 
 ---
 

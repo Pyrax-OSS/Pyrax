@@ -1,5 +1,5 @@
 import { StrictMode, useEffect } from 'react'
-import * as ReactDOM from 'react-dom/client';
+import * as ReactDOM from 'react-dom/client'
 import {
   Outlet,
   RouterProvider,
@@ -14,8 +14,8 @@ import Home from './home/page'
 import ServersDashboard from './app/servers/page'
 import NotFound from './components/NotFound'
 import { isAppSubdomain, isMainDomain } from './constants/config'
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import './styles.css'
 
 const RootComponent = () => {
@@ -33,18 +33,18 @@ const RootComponent = () => {
       navigate({ to: '/' })
     }
   }, [location.pathname, navigate])
-  
 
-  return <>
-    <SpeedInsights/>
-    <Analytics/>
-    <Outlet/>
-  </>
+  return (
+    <>
+      <Outlet />
+      <Analytics />
+      <SpeedInsights />
+    </>
+  )
 }
 
 const IndexComponent = () => {
   if (isAppSubdomain()) return <Dashboard />
-  if (isMainDomain()) return <Home />
   return <Home />
 }
 

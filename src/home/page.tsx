@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="bg-[#f3f4f6] text-black dark:bg-zinc-950 dark:text-white h-screen flex flex-col items-center justify-center transition-colors duration-300 relative">
-      <div className="absolute top-4 left-4 px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/50 text-xs sm:text-sm flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+      <div className="absolute top-4 left-4 px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/50 text-xs sm:text-sm flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
         <span className="font-semibold text-blue-600 dark:text-blue-400">
           Open for Commissions
         </span>

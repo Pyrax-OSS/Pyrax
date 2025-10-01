@@ -11,3 +11,5 @@ logs/
 package-lock.json
 .turbo
 bun.lock
+
+.vercel

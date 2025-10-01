@@ -39,7 +39,9 @@ export default function Home() {
           <br /> best looking and most performant software out there for
           businesses on any budget.
         </TypographyP>
-        <p className="mt-4 font-bold text-zinc-700 dark:text-zinc-300">{version}</p>
+        <p className="mt-4 font-bold text-zinc-700 dark:text-zinc-300">
+          {version}
+        </p>
       </div>
 
       <ThemeSwitcher theme={theme} setTheme={setTheme} />

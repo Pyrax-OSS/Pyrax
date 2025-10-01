@@ -1,5 +1,5 @@
 import { StrictMode, useEffect } from 'react'
-import ReactDOM from 'react-dom/client'
+import * as ReactDOM from 'react-dom/client';
 import {
   Outlet,
   RouterProvider,
@@ -9,11 +9,13 @@ import {
   useNavigate,
   useLocation,
 } from '@tanstack/react-router'
-import Dashboard from './app/page.tsx'
-import Home from './home/page.tsx'
-import ServersDashboard from './app/servers/page.tsx'
-import NotFound from './components/NotFound.tsx'
-import { isAppSubdomain, isMainDomain } from './constants/config.ts'
+import Dashboard from './app/page'
+import Home from './home/page'
+import ServersDashboard from './app/servers/page'
+import NotFound from './components/NotFound'
+import { isAppSubdomain, isMainDomain } from './constants/config'
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import './styles.css'
 
 const RootComponent = () => {
@@ -31,8 +33,13 @@ const RootComponent = () => {
       navigate({ to: '/' })
     }
   }, [location.pathname, navigate])
+  
 
-  return <Outlet />
+  return <>
+    <SpeedInsights/>
+    <Analytics/>
+    <Outlet/>
+  </>
 }
 
 const IndexComponent = () => {

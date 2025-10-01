@@ -1,31 +1,35 @@
 export const ROUTES = {
   HOME: "/",
   DASHBOARD: "/dashboard",
+  SERVERS: "/servers",
 };
 
 export const DOMAIN_RULES = {
-  main: "pyrax.dev",
-  appSubdomain: "app.pyrax.dev",
+  main: ["pyrax.dev", "localhost"],
+  appSubdomain: ["app.pyrax.dev", "app.localhost"],
 };
 
 export function isMainDomain(): boolean {
-  return window.location.hostname === DOMAIN_RULES.main;
+  return DOMAIN_RULES.main.includes(window.location.hostname);
 }
 
 export function isAppSubdomain(): boolean {
-  return window.location.hostname === DOMAIN_RULES.appSubdomain;
+  return DOMAIN_RULES.appSubdomain.includes(window.location.hostname);
 }
 
 export function resolveRoute(hostname: string, path: string) {
-  if (hostname === DOMAIN_RULES.main) {
+  if (DOMAIN_RULES.main.includes(hostname)) {
     if (path.startsWith("/api")) return path;
     if (path === "/" || path === "") return ROUTES.HOME;
-    return ROUTES.HOME;
+    return ROUTES.HOME; 
   }
 
-  if (hostname === DOMAIN_RULES.appSubdomain) {
+  if (DOMAIN_RULES.appSubdomain.includes(hostname)) {
     if (path === "/" || path === "") return ROUTES.DASHBOARD;
-    return ROUTES.DASHBOARD;
+
+    if (path.startsWith("/servers")) return ROUTES.SERVERS;
+
+    return ROUTES.DASHBOARD; 
   }
 
   return ROUTES.HOME;

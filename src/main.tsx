@@ -11,6 +11,7 @@ import {
 } from '@tanstack/react-router'
 import Dashboard from './app/page.tsx'
 import Home from './home/page.tsx'
+import ServersDashboard from './app/servers/page.tsx'
 import NotFound from './components/NotFound.tsx'
 import { isAppSubdomain, isMainDomain } from './constants/config.ts'
 import './styles.css'
@@ -26,7 +27,7 @@ const RootComponent = () => {
   }, [location.pathname, navigate])
 
   useEffect(() => {
-    if (isAppSubdomain() && location.pathname !== '/') {
+    if (isAppSubdomain() && location.pathname !== '/' && location.pathname !== '/servers') {
       navigate({ to: '/' })
     }
   }, [location.pathname, navigate])
@@ -51,7 +52,18 @@ const indexRoute = createRoute({
   component: IndexComponent,
 })
 
-const routeTree = rootRoute.addChildren([indexRoute])
+const ServersComponent = () => {
+  if (isAppSubdomain()) return <ServersDashboard />
+  return <NotFound />
+}
+
+const serversRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/servers',
+  component: ServersComponent,
+})
+
+const routeTree = rootRoute.addChildren([indexRoute, serversRoute])
 
 const router = createRouter({
   routeTree,

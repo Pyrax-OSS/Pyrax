@@ -19,8 +19,8 @@ export default function Home() {
       .get("/api/version")
       .then((res) => {
         const data = res.data;
-        if (typeof data === "object" && data !== null && "message" in data) {
-          setVersion(data.message);
+        if (typeof data === "object" && data !== null && "version" in data) {
+          setVersion(data.version);
         } else {
           setVersion(typeof data === "string" ? data : JSON.stringify(data));
         }

@@ -1,8 +1,13 @@
 .vscode/
 node_modules/
-netlify.toml
-bun.lock
-# Local Netlify folder
-.netlify
 dist/
 .env
+*.log
+logs/
+.DS_Store
+*.swp
+*.swo
+*~
+package-lock.json
+.turbo
+bun.lock

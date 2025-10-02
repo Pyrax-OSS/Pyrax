@@ -1,9 +1,11 @@
 export const ROUTES = {
   HOME: "/",
   DASHBOARD: "/dashboard",
-  PRODUCTS: "/producs",
+  PRODUCTS: "/products",
   AUTH: "/auth",
 };
+
+export const API_URL = "https://api.pyrax.dev";
 
 export const DOMAIN_RULES = {
   main: ["pyrax.dev", "localhost"],
@@ -20,18 +22,15 @@ export function isAppSubdomain(): boolean {
 
 export function resolveRoute(hostname: string, path: string) {
   if (DOMAIN_RULES.main.includes(hostname)) {
-    if (path.startsWith("/api")) return path;
+    if (path.startsWith("/")) return path;
     if (path === "/" || path === "") return ROUTES.HOME;
     return ROUTES.HOME;
   }
 
   if (DOMAIN_RULES.appSubdomain.includes(hostname)) {
     if (path === "/" || path === "") return ROUTES.DASHBOARD;
-
     if (path.startsWith("/products")) return ROUTES.PRODUCTS;
-
     if (path.startsWith("/auth")) return ROUTES.AUTH;
-
     return ROUTES.DASHBOARD;
   }
 

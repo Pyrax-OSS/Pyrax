@@ -16,7 +16,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("/api/version")
+      .get("https://api.pyrax.dev/version")
       .then((res) => {
         const data = res.data;
         if (typeof data === "object" && data !== null && "version" in data) {

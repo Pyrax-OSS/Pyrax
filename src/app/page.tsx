@@ -12,7 +12,7 @@ import Card from "@/components/Card.js";
 import Button from "@/components/Button.js";
 import { ChartPieIcon } from "@heroicons/react/24/solid";
 
-export default function ServersDashboard() {
+export default function Dashboard() {
   return (
     <ProtectedRoute>
       <DashboardLayout>

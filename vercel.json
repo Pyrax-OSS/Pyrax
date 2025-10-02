@@ -5,7 +5,7 @@
       "destination": "/api/:path*"
     },
     {
-      "source": "/((?!api).*)",
+      "source": "/((?!api|assets|_app|favicon\\.ico|icon\\.png|.*\\.js|.*\\.css|.*\\.ts|.*\\.tsx).*)",
       "destination": "/index.html"
     }
   ]

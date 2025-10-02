@@ -1,24 +1,14 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/backend/api(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "(?!api\\.pyrax\\.dev).*"
-        }
-      ],
-      "status": 404
-    },
-    {
-      "src": "/(.*)",
+      "source": "/(.*)",
+      "destination": "/api/index.ts",
       "has": [
         {
           "type": "host",
           "value": "api.pyrax.dev"
         }
-      ],
-      "dest": "/backend/api/index.ts"
+      ]
     }
   ]
 }

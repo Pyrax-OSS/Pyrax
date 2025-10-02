@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import { useSession } from "../../lib/auth-client";
-import { useNavigate } from "react-router-dom";
+import { useSession } from "../../lib/auth-client.js";
+import { useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import LoadingPage from "./LoadingPage";
+import LoadingPage from "./LoadingPage.js";
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -14,7 +14,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   useEffect(() => {
     if (!isPending && !session) {
-      navigate("/auth");
+      navigate({ to: "/auth" });
     }
   }, [session, isPending, navigate]);
 

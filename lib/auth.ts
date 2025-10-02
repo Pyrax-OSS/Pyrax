@@ -9,6 +9,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET!,
   baseURL: process.env.BETTER_AUTH_URL!,
+  trustedOrigins: ["http://localhost:3000", "https://app.pyrax.dev", "https://pyrax.dev", "*.pyrax.dev"],
   database: drizzleAdapter(db, {
     provider: "pg",
   }),

@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import { useSession } from "../../lib/auth-client.js";
+import { useSession } from "../../lib/auth-client";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import LoadingPage from "./LoadingPage.js";
+import LoadingPage from "./LoadingPage";
 
 interface ProtectedRouteProps {
   children: ReactNode;

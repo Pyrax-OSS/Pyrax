@@ -13,7 +13,11 @@ interface DashboardSidebarProps {
   setTheme: (theme: Theme) => void;
 }
 
-export default function DashboardSidebar({ sidebarOpen, theme, setTheme }: DashboardSidebarProps) {
+export default function DashboardSidebar({
+  sidebarOpen,
+  theme,
+  setTheme,
+}: DashboardSidebarProps) {
   return (
     <div
       className={`fixed sm:static z-30 inset-y-0 left-0 transform sm:translate-x-0 transition-transform duration-200 ease-in-out w-64 flex flex-col p-4 bg-white dark:bg-zinc-950 sm:bg-transparent sm:dark:bg-transparent ${

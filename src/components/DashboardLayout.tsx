@@ -27,7 +27,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </button>
       </div>
 
-      <DashboardSidebar sidebarOpen={sidebarOpen} theme={theme} setTheme={setTheme} />
+      <DashboardSidebar
+        sidebarOpen={sidebarOpen}
+        theme={theme}
+        setTheme={setTheme}
+      />
 
       <div className="flex-1 flex flex-col items-start p-2 space-y-6 mt-12 sm:mt-0 overflow-y-auto">
         {children}

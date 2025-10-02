@@ -1,5 +1,9 @@
 import { useEffect } from "react";
-import { SunIcon, MoonIcon, ComputerDesktopIcon } from "@heroicons/react/24/outline";
+import {
+  SunIcon,
+  MoonIcon,
+  ComputerDesktopIcon,
+} from "@heroicons/react/24/outline";
 import type { Theme } from "@/utils/theme";
 import { resolveTheme, applyTheme, setStoredTheme } from "@/utils/theme";
 
@@ -51,7 +55,9 @@ export default function ThemeSwitcher({ theme, setTheme }: ThemeSwitcherProps) {
           >
             <Icon
               className={`w-4 h-4 transition-colors duration-300 ${
-                isActive ? "text-zinc-800 dark:text-zinc-100" : "text-zinc-700 dark:text-zinc-400"
+                isActive
+                  ? "text-zinc-800 dark:text-zinc-100"
+                  : "text-zinc-700 dark:text-zinc-400"
               }`}
             />
           </button>

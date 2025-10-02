@@ -7,9 +7,9 @@ import {
   TypographyP,
   TypographySmall,
   TypographyMuted,
-} from "@/components/Typography";
-import Card from "@/components/Card";
-import Button from "@/components/Button";
+} from "@/components/Typography.js";
+import Card from "@/components/Card.js";
+import Button from "@/components/Button.js";
 import { ChartPieIcon } from "@heroicons/react/24/solid";
 
 export default function ServersDashboard() {

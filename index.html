@@ -8,8 +8,9 @@
   <meta name="description" content="Pyrax - Professional software development and freelance services" />
   <meta name="theme-color" content="#0a0a0b" />
   <title>Pyrax - Software Development</title>
-  <script>
-    (function() {
+<script>
+  (function() {
+    try {
       const theme = localStorage.getItem('theme-preference') || 'light';
       const isDark = theme === 'system'
         ? window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -17,8 +18,11 @@
       if (isDark) {
         document.documentElement.classList.add('dark');
       }
-    })();
-  </script>
+    } catch (e) {
+      console.error("please kill me like honestly wtf is this", e)
+    }
+  })();
+</script>
 </head>
 
 <body>

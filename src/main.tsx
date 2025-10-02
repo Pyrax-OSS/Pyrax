@@ -17,6 +17,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./styles.css";
 import ProductsDashboard from "./app/products/page";
+import AuthenticationDashboard from "./app/auth/page";
 
 const RootComponent = () => {
   const navigate = useNavigate();
@@ -36,7 +37,8 @@ const RootComponent = () => {
     if (
       isAppSubdomain() &&
       location.pathname !== "/" &&
-      location.pathname !== "/products"
+      location.pathname !== "/products" &&
+      location.pathname !== "/auth"
     ) {
       navigate({ to: "/" });
     }
@@ -78,7 +80,18 @@ const productsRoute = createRoute({
   component: ProductsComponent,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, productsRoute]);
+const AuthComponent = () => {
+  if (isAppSubdomain()) return <AuthenticationDashboard />;
+  return <NotFound />;
+};
+
+const authRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/auth",
+  component: AuthComponent,
+});
+
+const routeTree = rootRoute.addChildren([indexRoute, productsRoute, authRoute]);
 
 const router = createRouter({
   routeTree,

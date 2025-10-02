@@ -1,5 +1,5 @@
-import * as React from "react"
-import { cn } from "@/utils/utils"
+import * as React from "react";
+import { cn } from "@/utils/utils";
 
 export function TypographyH1({
   children,
@@ -16,7 +16,7 @@ export function TypographyH1({
     >
       {children}
     </h1>
-  )
+  );
 }
 
 export function TypographyH2({
@@ -27,14 +27,14 @@ export function TypographyH2({
   return (
     <h2
       className={cn(
-        "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+        "scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0",
         className
       )}
       {...props}
     >
       {children}
     </h2>
-  )
+  );
 }
 
 export function TypographyH3({
@@ -52,7 +52,7 @@ export function TypographyH3({
     >
       {children}
     </h3>
-  )
+  );
 }
 
 export function TypographyH4({
@@ -70,7 +70,7 @@ export function TypographyH4({
     >
       {children}
     </h4>
-  )
+  );
 }
 
 export function TypographyP({
@@ -85,7 +85,7 @@ export function TypographyP({
     >
       {children}
     </p>
-  )
+  );
 }
 
 export function TypographyBlockquote({
@@ -100,7 +100,7 @@ export function TypographyBlockquote({
     >
       {children}
     </blockquote>
-  )
+  );
 }
 
 export function TypographyList({
@@ -109,13 +109,10 @@ export function TypographyList({
   ...props
 }: React.HTMLAttributes<HTMLUListElement>) {
   return (
-    <ul
-      className={cn("my-6 ml-6 list-disc [&>li]:mt-2", className)}
-      {...props}
-    >
+    <ul className={cn("my-6 ml-6 list-disc [&>li]:mt-2", className)} {...props}>
       {children}
     </ul>
-  )
+  );
 }
 
 export function TypographyInlineCode({
@@ -133,7 +130,7 @@ export function TypographyInlineCode({
     >
       {children}
     </code>
-  )
+  );
 }
 
 export function TypographyLead({
@@ -142,13 +139,10 @@ export function TypographyLead({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p
-      className={cn("text-muted-foreground text-xl", className)}
-      {...props}
-    >
+    <p className={cn("text-muted-foreground text-xl", className)} {...props}>
       {children}
     </p>
-  )
+  );
 }
 
 export function TypographyLarge({
@@ -160,7 +154,7 @@ export function TypographyLarge({
     <div className={cn("text-lg font-semibold", className)} {...props}>
       {children}
     </div>
-  )
+  );
 }
 
 export function TypographySmall({
@@ -175,7 +169,7 @@ export function TypographySmall({
     >
       {children}
     </small>
-  )
+  );
 }
 
 export function TypographyMuted({
@@ -184,11 +178,8 @@ export function TypographyMuted({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p
-      className={cn("text-muted-foreground text-sm", className)}
-      {...props}
-    >
+    <p className={cn("text-muted-foreground text-sm", className)} {...props}>
       {children}
     </p>
-  )
+  );
 }

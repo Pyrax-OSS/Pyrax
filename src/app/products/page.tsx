@@ -9,6 +9,7 @@ import {
 } from "@/components/Typography";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
+import { CurrencyPoundIcon } from "@heroicons/react/24/solid";
 
 export default function ProductsDashboard() {
   return (
@@ -19,7 +20,8 @@ export default function ProductsDashboard() {
         </TypographyH1>
 
         <div className="bg-zinc-950/5 dark:bg-zinc-800/10 text-sm rounded-lg p-1 dark:p-1.5">
-          <TypographySmall className="font-semibold text-zinc-500 dark:text-zinc-400 ml-1">
+          <TypographySmall className="flex items-center gap-2 font-semibold text-zinc-500 dark:text-zinc-400 ml-1 mb-1.5 mt-1">
+            <CurrencyPoundIcon className="w-4 h-4 text-black/40" />
             Featured Software Solutions
           </TypographySmall>
           <div className="grid grid-cols-3 mt-1 gap-1 dark:gap-1.5">

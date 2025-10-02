@@ -2,6 +2,7 @@ export const ROUTES = {
   HOME: "/",
   DASHBOARD: "/dashboard",
   PRODUCTS: "/producs",
+  AUTH: "/auth",
 };
 
 export const DOMAIN_RULES = {
@@ -28,6 +29,8 @@ export function resolveRoute(hostname: string, path: string) {
     if (path === "/" || path === "") return ROUTES.DASHBOARD;
 
     if (path.startsWith("/products")) return ROUTES.PRODUCTS;
+
+    if (path.startsWith("/auth")) return ROUTES.AUTH;
 
     return ROUTES.DASHBOARD;
   }

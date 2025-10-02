@@ -9,6 +9,7 @@ import {
 } from "@/components/Typography";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
+import { ChartPieIcon } from "@heroicons/react/24/solid";
 
 export default function ServersDashboard() {
   return (
@@ -19,14 +20,27 @@ export default function ServersDashboard() {
         </TypographyH1>
 
         <div className="bg-zinc-950/5 dark:bg-zinc-800/10 text-sm rounded-lg p-1 dark:p-1.5">
-          <TypographySmall className="font-semibold text-zinc-500 dark:text-zinc-400 ml-1">
+          <TypographySmall className="flex items-center gap-2 font-semibold text-zinc-500 dark:text-zinc-400 ml-1 mb-1.5 mt-1">
+            <ChartPieIcon className="w-4 h-4 text-black/40" />
             Your Account Overview
           </TypographySmall>
           <div className="grid grid-cols-3 mt-1 gap-1 dark:gap-1.5">
             {[
-              { title: "Active Licenses", used: "1", percent: "Renewal in 4 days" },
-              { title: "Support Tickets", used: "1 Open", percent: "Needs attention" },
-              { title: "Purchases", used: "2", percent: "Buy 1 more for 50% off" },
+              {
+                title: "Active Licenses",
+                used: "1",
+                percent: "Renewal in 4 days",
+              },
+              {
+                title: "Support Tickets",
+                used: "1 Open",
+                percent: "Needs attention",
+              },
+              {
+                title: "Purchases",
+                used: "2",
+                percent: "Buy 1 more for 50% off",
+              },
             ].map((res) => (
               <Card key={res.title}>
                 <div className="flex items-center mb-8">
@@ -69,5 +83,3 @@ export default function ServersDashboard() {
     </DashboardLayout>
   );
 }
-
-

@@ -39,7 +39,7 @@ export default function AuthenticationDashboard() {
         email,
         otp,
       });
-      window.location.href = "/app";
+      window.location.href = "/";
     } catch (error) {
       console.error("Failed to verify OTP:", error);
       alert("Invalid OTP. Please try again.");

@@ -1,7 +1,7 @@
 {
   "routes": [
     {
-      "src": "/api(.*)",
+      "src": "/backend/api(.*)",
       "has": [
         {
           "type": "host",
@@ -18,7 +18,7 @@
           "value": "api.pyrax.dev"
         }
       ],
-      "dest": "/api/index.ts"
+      "dest": "/backend/api/index.ts"
     }
   ]
 }

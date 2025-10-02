@@ -1,11 +1,9 @@
-import { Hono, Context } from "hono";
+import { Context } from "hono";
 import { Next } from "hono/dist/types";
-
-const app = new Hono();
 
 const allowedOrigins = ["https://pyrax.dev", "https://app.pyrax.dev"];
 
-app.use("*", async (c: Context, next: Next) => {
+export async function corsMiddleware(c: Context, next: Next) {
   const origin = c.req.header("origin");
   if (origin && allowedOrigins.includes(origin)) {
     c.header("Access-Control-Allow-Origin", origin);
@@ -19,10 +17,4 @@ app.use("*", async (c: Context, next: Next) => {
   }
 
   await next();
-});
-
-app.get("/version", (c) => c.json({ version: "Pyrax - v1.5.3" }));
-app.get("/", (c) => c.json({ status: "ok" }));
-
-export const config = { runtime: "edge" };
-export default app.fetch;
+}

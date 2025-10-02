@@ -10,12 +10,12 @@ import {
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 
-export default function HomeDashboard() {
+export default function ServersDashboard() {
   return (
     <DashboardLayout>
       <div className="bg-[#fafafa] dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/50 rounded-lg w-full h-full p-8">
         <TypographyH1 className="mb-6 dark:text-zinc-50 !text-4xl">
-          Welcome back
+          Welcome back, Fraser! 👋
         </TypographyH1>
 
         <div className="bg-zinc-950/5 dark:bg-zinc-800/10 text-sm rounded-lg p-1 dark:p-1.5">

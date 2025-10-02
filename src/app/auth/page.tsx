@@ -12,6 +12,9 @@ import { authClient } from "../../../lib/auth-client";
 export default function AuthenticationDashboard() {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState("");
+  const [mode, setMode] = useState<"signin" | "register">("signin");
   const [step, setStep] = useState<"email" | "otp">("email");
   const [loading, setLoading] = useState(false);
   const [theme, setTheme] = useState<Theme>(getStoredTheme);
@@ -35,11 +38,21 @@ export default function AuthenticationDashboard() {
   const handleVerifyOTP = async () => {
     setLoading(true);
     try {
-      await authClient.signIn.emailOtp({
-        email,
-        otp,
-      });
-      window.location.href = "/";
+      await authClient.signIn.emailOtp(
+        {
+          email,
+          otp,
+        },
+        {
+          onSuccess: () => {
+            window.location.href = "/";
+          },
+          onError: (ctx: any) => {
+            console.error("Failed to verify OTP:", ctx.error);
+            alert(ctx.error.message || "Invalid OTP. Please try again.");
+          },
+        }
+      );
     } catch (error) {
       console.error("Failed to verify OTP:", error);
       alert("Invalid OTP. Please try again.");
@@ -48,26 +61,69 @@ export default function AuthenticationDashboard() {
     }
   };
 
+  const switchMode = () => {
+    setMode(mode === "signin" ? "register" : "signin");
+    setStep("email");
+    setEmail("");
+    setOtp("");
+    setFullName("");
+    setUsername("");
+  };
+
+  const isEmailStepValid = () => {
+    if (mode === "signin") {
+      return !!email;
+    }
+    return !!email && !!fullName && !!username;
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-zinc-100 dark:bg-[#0a0a0b]">
       <div className="bg-zinc-950/5 dark:bg-zinc-800/10 text-sm rounded-lg p-1 dark:p-1.5">
         <TypographySmall className="flex items-center gap-2 font-semibold text-zinc-500 dark:text-zinc-400 ml-1 mb-1.5 mt-1">
           <LockClosedIcon className="w-4 h-4 text-black/40 dark:text-zinc-400" />
-          {step === "email" ? "Email Authentication" : "Enter OTP"}
+          {step === "email"
+            ? mode === "signin"
+              ? "Email Authentication"
+              : "Create Account"
+            : "Enter OTP"}
         </TypographySmall>
 
         <Card className="p-6 flex flex-col w-[420px]">
           <h2 className="font-semibold text-2xl dark:text-zinc-100">
-            {step === "email" ? "Welcome home" : "Verify your email"}
+            {step === "email"
+              ? mode === "signin"
+                ? "Welcome home"
+                : "Create your account"
+              : "Verify your email"}
           </h2>
           <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300 mb-4">
             {step === "email"
-              ? "Sign in to the Pyrax dashboard with email OTP"
+              ? mode === "signin"
+                ? "Sign in to the Pyrax dashboard with email OTP"
+                : "Register for the Pyrax dashboard"
               : `We sent a code to ${email}`}
           </p>
 
           {step === "email" ? (
             <>
+              {mode === "register" && (
+                <>
+                  <InputField
+                    label="Full Name"
+                    type="text"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                  <InputField
+                    label="Username"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </>
+              )}
+
               <InputField
                 label="Email"
                 type="email"
@@ -79,10 +135,34 @@ export default function AuthenticationDashboard() {
                 className="w-full bg-black text-white text-center justify-center"
                 onClick={handleSendOTP}
                 loading={loading}
-                disabled={!email}
+                disabled={!isEmailStepValid()}
               >
-                Send OTP
+                {mode === "signin" ? "Send OTP" : "Continue"}
               </Button>
+
+              <TypographyP className="text-sm text-zinc-500 dark:text-zinc-400 text-center mt-3">
+                {mode === "signin" ? (
+                  <>
+                    Don't have an account?{" "}
+                    <button
+                      onClick={switchMode}
+                      className="text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
+                    >
+                      Register
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    Already have an account?{" "}
+                    <button
+                      onClick={switchMode}
+                      className="text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
+                    >
+                      Sign in
+                    </button>
+                  </>
+                )}
+              </TypographyP>
             </>
           ) : (
             <>
@@ -101,7 +181,7 @@ export default function AuthenticationDashboard() {
                 loading={loading}
                 disabled={!otp || otp.length !== 6}
               >
-                Verify & Sign In
+                Verify & {mode === "signin" ? "Sign In" : "Register"}
               </Button>
 
               <TypographyP className="text-sm text-zinc-500 dark:text-zinc-400 text-center mt-2">

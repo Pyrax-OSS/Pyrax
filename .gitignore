@@ -11,5 +11,5 @@ logs/
 package-lock.json
 .turbo
 bun.lock
-
+BETTERAUTH.md
 .vercel

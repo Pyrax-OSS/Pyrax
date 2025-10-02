@@ -1,61 +1,55 @@
-import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  integer,
+  varchar,
+  text,
+  timestamp,
+  boolean,
+} from "drizzle-orm/pg-core";
 
-export const user = pgTable("user", {
-  id: text("id").primaryKey(),
-  name: text("name").notNull(),
-  email: text("email").notNull().unique(),
+export const users = pgTable("users", {
+  id: integer("id", { autoIncrement: true }).primaryKey(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  username: varchar("username", { length: 50 }).notNull().unique(),
+  fullName: varchar("full_name", { length: 255 }).notNull(),
+  profileImage: text("profile_image"), // store base64-encoded image
   emailVerified: boolean("email_verified").default(false).notNull(),
-  image: text("image"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at")
+  isAdmin: boolean("is_admin").default(false).notNull(),
+  isUser: boolean("is_user").default(true).notNull(),
+  isCustomer: boolean("is_customer").default(false).notNull(),
+  createdAt: timestamp("created_at", { mode: "timestamp" })
     .defaultNow()
-    .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
-});
-
-export const session = pgTable("session", {
-  id: text("id").primaryKey(),
-  expiresAt: timestamp("expires_at").notNull(),
-  token: text("token").notNull().unique(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at")
-    .$onUpdate(() => /* @__PURE__ */ new Date())
-    .notNull(),
-  ipAddress: text("ip_address"),
-  userAgent: text("user_agent"),
-  userId: text("user_id")
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
-});
-
-export const account = pgTable("account", {
-  id: text("id").primaryKey(),
-  accountId: text("account_id").notNull(),
-  providerId: text("provider_id").notNull(),
-  userId: text("user_id")
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
-  accessToken: text("access_token"),
-  refreshToken: text("refresh_token"),
-  idToken: text("id_token"),
-  accessTokenExpiresAt: timestamp("access_token_expires_at"),
-  refreshTokenExpiresAt: timestamp("refresh_token_expires_at"),
-  scope: text("scope"),
-  password: text("password"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at")
-    .$onUpdate(() => /* @__PURE__ */ new Date())
-    .notNull(),
-});
-
-export const verification = pgTable("verification", {
-  id: text("id").primaryKey(),
-  identifier: text("identifier").notNull(),
-  value: text("value").notNull(),
-  expiresAt: timestamp("expires_at").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at")
+  updatedAt: timestamp("updated_at", { mode: "timestamp" })
     .defaultNow()
-    .$onUpdate(() => /* @__PURE__ */ new Date())
+    .notNull(),
+});
+
+export const userSessions = pgTable("user_sessions", {
+  id: integer("id", { autoIncrement: true }).primaryKey(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  refreshToken: text("refresh_token").notNull(),
+  accessToken: text("access_token").notNull(),
+  userAgent: varchar("user_agent", { length: 512 }),
+  createdAt: timestamp("created_at", { mode: "timestamp" })
+    .defaultNow()
+    .notNull(),
+  updatedAt: timestamp("updated_at", { mode: "timestamp" })
+    .defaultNow()
+    .notNull(),
+});
+
+export const emailOtps = pgTable("email_otps", {
+  id: integer("id", { autoIncrement: true }).primaryKey(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  otpCode: varchar("otp_code", { length: 10 }).notNull(),
+  expiresAt: timestamp("expires_at", { mode: "timestamp" }).notNull(),
+  used: boolean("used").default(false).notNull(),
+  createdAt: timestamp("created_at", { mode: "timestamp" })
+    .defaultNow()
     .notNull(),
 });

@@ -1,5 +1,8 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { Hono } from "hono";
+import { handle } from "hono/vercel";
 
-export default function handler(_req: VercelRequest, res: VercelResponse) {
-  return res.status(200).json({ version: "Pyrax - v1.0.0" });
-}
+const app = new Hono();
+
+app.get("/api/version", (c) => c.json({ version: "Pyrax - v.1.5.3" }));
+
+export const GET = handle(app);

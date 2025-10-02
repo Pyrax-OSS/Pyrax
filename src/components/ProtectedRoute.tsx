@@ -1,11 +1,25 @@
-import { ReactNode } from "react";
-import { useSession } from "../../lib/auth-client";
+import { ReactNode, useState, useEffect } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { useEffect } from "react";
 import LoadingPage from "./LoadingPage";
 
 interface ProtectedRouteProps {
   children: ReactNode;
+}
+
+function useSession() {
+  const [data, setData] = useState<null | { user: string }>(null);
+  const [isPending, setIsPending] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setData({ user: "dummyUser" });
+      setIsPending(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return { data, isPending };
 }
 
 export function ProtectedRoute({ children }: ProtectedRouteProps) {

@@ -1,29 +1,28 @@
-# Pyrax
+Prerequisites:
 
-This is the home page and soon to be customer dashboard for purchasing and getting support for pyrax products.
+- [Vercel CLI](https://vercel.com/docs/cli) installed globally
 
----
+To develop locally:
 
-![Pyrax Banner](./public/banner.png)
+```
+npm install
+vc dev
+```
 
-## TODO
+```
+open http://localhost:3000
+```
 
-- [x] Setup base application with api functions
-- [x] Implement custom serverless functions 
-- [x] Add ratelimiting
-- [ ] Design and implement the database schema  
-- [ ] Add user authentication and authorization  
-- [ ] Implement rate limiting to prevent abuse  
-- [ ] Implement a system for creating support tickets  
-- [ ] Add real-time synchronization for support ticket messages  
-- [ ] Implement user roles and permissions  
-- [ ] Integrate payment processing  
-- [ ] Allow customers to securely download their purchased products
+To build locally:
 
----
+```
+npm install
+vc build
+```
 
-Made with ❤️ by Fraser
+To deploy:
 
-📜 [License](LICENSE.md)
-
-*Need help? Check the [Pyrax GitHub](https://github.com/Pyrax-OSS/Pyrax) for issues and discussions.*
+```
+npm install
+vc deploy
+```

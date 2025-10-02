@@ -7,7 +7,6 @@ import InputField from "@/components/Input";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import type { Theme } from "@/utils/theme";
 import { getStoredTheme } from "@/utils/theme";
-import { authClient } from "../../../lib/auth-client";
 
 export default function AuthenticationDashboard() {
   const [email, setEmail] = useState("");
@@ -21,44 +20,17 @@ export default function AuthenticationDashboard() {
 
   const handleSendOTP = async () => {
     setLoading(true);
-    try {
-      await authClient.emailOtp.sendVerificationOtp({
-        email,
-        type: "sign-in",
-      });
+    setTimeout(() => {
       setStep("otp");
-    } catch (error) {
-      console.error("Failed to send OTP:", error);
-      alert("Failed to send OTP. Please try again.");
-    } finally {
       setLoading(false);
-    }
+    }, 1000);
   };
 
   const handleVerifyOTP = async () => {
     setLoading(true);
-    try {
-      await authClient.signIn.emailOtp(
-        {
-          email,
-          otp,
-        },
-        {
-          onSuccess: () => {
-            window.location.href = "/";
-          },
-          onError: (ctx: any) => {
-            console.error("Failed to verify OTP:", ctx.error);
-            alert(ctx.error.message || "Invalid OTP. Please try again.");
-          },
-        }
-      );
-    } catch (error) {
-      console.error("Failed to verify OTP:", error);
-      alert("Invalid OTP. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 1000);
   };
 
   const switchMode = () => {

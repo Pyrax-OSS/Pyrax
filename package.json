@@ -24,6 +24,7 @@
     "better-auth": "1.3.24",
     "dotenv": "17.2.3",
     "drizzle-orm": "0.44.6",
+    "hono": "^4.9.9",
     "prettier": "3.6.2",
     "react": "19.2.0",
     "react-dom": "19.2.0",

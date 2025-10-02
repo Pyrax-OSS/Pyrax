@@ -3,6 +3,6 @@ import { handle } from "hono/vercel";
 
 const app = new Hono();
 
-app.get("/api/version", (c) => c.json({ version: "Pyrax - v.1.5.3" }));
+app.get("/api/version", (c) => c.json({ version: "Pyrax - v1.5.3" }));
 
-export const GET = handle(app);
+export default handle(app);

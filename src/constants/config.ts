@@ -1,7 +1,7 @@
 export const ROUTES = {
   HOME: "/",
   DASHBOARD: "/dashboard",
-  SERVERS: "/servers",
+  PRODUCTS: "/producs",
 };
 
 export const DOMAIN_RULES = {
@@ -21,15 +21,15 @@ export function resolveRoute(hostname: string, path: string) {
   if (DOMAIN_RULES.main.includes(hostname)) {
     if (path.startsWith("/api")) return path;
     if (path === "/" || path === "") return ROUTES.HOME;
-    return ROUTES.HOME; 
+    return ROUTES.HOME;
   }
 
   if (DOMAIN_RULES.appSubdomain.includes(hostname)) {
     if (path === "/" || path === "") return ROUTES.DASHBOARD;
 
-    if (path.startsWith("/servers")) return ROUTES.SERVERS;
+    if (path.startsWith("/products")) return ROUTES.PRODUCTS;
 
-    return ROUTES.DASHBOARD; 
+    return ROUTES.DASHBOARD;
   }
 
   return ROUTES.HOME;

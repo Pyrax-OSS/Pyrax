@@ -1,4 +1,4 @@
-import { HomeIcon, ServerIcon } from "@heroicons/react/24/outline";
+import { HomeIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
 
 export interface NavItem {
   name: string;
@@ -13,8 +13,8 @@ export const navItems: NavItem[] = [
     icon: HomeIcon,
   },
   {
-    name: "Servers",
-    path: "/servers",
-    icon: ServerIcon,
+    name: "Products",
+    path: "/products",
+    icon: ShoppingBagIcon,
   },
 ];

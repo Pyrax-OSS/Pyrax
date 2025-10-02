@@ -1,11 +1,11 @@
 import { ChevronUpIcon } from "@heroicons/react/24/outline";
-import banner from "@/assets/text.png";
-import type { Theme } from "@/utils/theme";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import { TypographySmall } from "@/components/Typography";
-import Dropdown from "@/components/Dropdown";
+import banner from "../assets/text.png";
+import type { Theme } from "../utils/theme";
+import ThemeSwitcher from "../components/ThemeSwitcher";
+import { TypographySmall } from "../components/Typography";
+import Dropdown from "../components/Dropdown";
 import { Link } from "@tanstack/react-router";
-import { navItems } from "@/constants/navItems";
+import { navItems } from "../constants/navItems";
 
 interface DashboardSidebarProps {
   sidebarOpen: boolean;

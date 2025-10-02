@@ -1,4 +1,4 @@
-import DashboardLayout from "@/components/DashboardLayout";
+import DashboardLayout from "../../components/DashboardLayout";
 import {
   TypographyH1,
   TypographyH2,
@@ -6,9 +6,9 @@ import {
   TypographyP,
   TypographySmall,
   TypographyMuted,
-} from "@/components/Typography";
-import Card from "@/components/Card";
-import Button from "@/components/Button";
+} from "../../components/Typography";
+import Card from "../../components/Card";
+import Button from "../../components/Button";
 import { CurrencyPoundIcon } from "@heroicons/react/24/solid";
 
 export default function ProductsDashboard() {

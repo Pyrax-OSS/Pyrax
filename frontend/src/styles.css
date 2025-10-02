@@ -32,12 +32,13 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 ::selection {
-  background: #000000; 
-  color: #ffffff;      
+  background: #000000;
+  color: #ffffff;
 }
 
 ::-moz-selection {
@@ -46,8 +47,8 @@ code {
 }
 
 .dark ::selection {
-  background: #ffffff; 
-  color: #000000;     
+  background: #ffffff;
+  color: #000000;
 }
 
 .dark ::-moz-selection {

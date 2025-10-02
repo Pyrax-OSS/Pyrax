@@ -2,8 +2,8 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import banner from "@/assets/text.png";
-import type { Theme } from "@/utils/theme";
-import { getStoredTheme } from "@/utils/theme";
+import type { Theme } from "../utils/theme";
+import { getStoredTheme } from "../utils/theme";
 import DashboardSidebar from "./DashboardSidebar";
 
 interface DashboardLayoutProps {

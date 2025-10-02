@@ -1,12 +1,15 @@
-import Card from "@/components/Card";
-import { TypographyP, TypographySmall } from "@/components/Typography";
+import Card from "../../components/Card";
+import {
+  TypographyP,
+  TypographySmall,
+} from "../../components/Typography";
 import { LockClosedIcon } from "@heroicons/react/24/solid";
-import Button from "@/components/Button";
+import Button from "../../components/Button";
 import { useState } from "react";
-import InputField from "@/components/Input";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import type { Theme } from "@/utils/theme";
-import { getStoredTheme } from "@/utils/theme";
+import InputField from "../../components/Input";
+import ThemeSwitcher from "../../components/ThemeSwitcher";
+import type { Theme } from "../../utils/theme";
+import { getStoredTheme } from "../../utils/theme";
 
 export default function AuthenticationDashboard() {
   const [email, setEmail] = useState("");

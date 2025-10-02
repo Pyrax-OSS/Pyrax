@@ -4,8 +4,12 @@ import {
   MoonIcon,
   ComputerDesktopIcon,
 } from "@heroicons/react/24/outline";
-import type { Theme } from "@/utils/theme";
-import { resolveTheme, applyTheme, setStoredTheme } from "@/utils/theme";
+import type { Theme } from "../utils/theme";
+import {
+  resolveTheme,
+  applyTheme,
+  setStoredTheme,
+} from "../utils/theme";
 
 interface ThemeSwitcherProps {
   theme: Theme;

@@ -3,10 +3,10 @@ import {
   TypographyH1,
   TypographyP,
   TypographySmall,
-} from "@/components/Typography";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import type { Theme } from "@/utils/theme";
-import { getStoredTheme } from "@/utils/theme";
+} from "../components/Typography";
+import ThemeSwitcher from "../components/ThemeSwitcher";
+import type { Theme } from "../utils/theme";
+import { getStoredTheme } from "../utils/theme";
 import axios from "axios";
 
 export default function Home() {

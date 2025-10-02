@@ -23,6 +23,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+api/node_modules
+frontend/node_modules
+frontend/bun.lock
+api/bun.lock
+bun.lock
 
 # misc
 .DS_Store

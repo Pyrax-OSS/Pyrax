@@ -1,5 +1,5 @@
-import DashboardLayout from "@/components/DashboardLayout";
-import { ProtectedRoute } from "@/components/ProtectedRoute";
+import DashboardLayout from "../components/DashboardLayout";
+import { ProtectedRoute } from "../components/ProtectedRoute";
 import {
   TypographyH1,
   TypographyH2,
@@ -7,9 +7,9 @@ import {
   TypographyP,
   TypographySmall,
   TypographyMuted,
-} from "@/components/Typography.js";
-import Card from "@/components/Card.js";
-import Button from "@/components/Button.js";
+} from "../components/Typography";
+import Card from "../components/Card";
+import Button from "../components/Button";
 import { ChartPieIcon } from "@heroicons/react/24/solid";
 
 export default function Dashboard() {

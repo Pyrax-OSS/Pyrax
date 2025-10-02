@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { TypographyH1, TypographyP } from "@/components/Typography";
-import Button from "@/components/Button";
-import Card from "@/components/Card";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import type { Theme } from "@/utils/theme";
-import { getStoredTheme, applyTheme, resolveTheme } from "@/utils/theme";
+import { TypographyH1, TypographyP } from "../components/Typography";
+import Button from "../components/Button";
+import Card from "../components/Card";
+import ThemeSwitcher from "../components/ThemeSwitcher";
+import type { Theme } from "../utils/theme";
+import {
+  getStoredTheme,
+  applyTheme,
+  resolveTheme,
+} from "../utils/theme";
 
 export default function NotFound() {
   const [theme, setTheme] = useState<Theme>(() => {

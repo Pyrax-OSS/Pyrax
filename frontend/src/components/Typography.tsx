@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn } from "@/utils/utils";
+import { cn } from "../utils/utils";
 
 export function TypographyH1({
   children,

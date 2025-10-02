@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import banner from "@/assets/text.png";
 import type { Theme } from "@/utils/theme";
-import { getStoredTheme, applyTheme, resolveTheme } from "@/utils/theme";
+import { getStoredTheme } from "@/utils/theme";
 import DashboardSidebar from "./DashboardSidebar";
 
 interface DashboardLayoutProps {
@@ -11,11 +11,7 @@ interface DashboardLayoutProps {
 }
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const storedTheme = getStoredTheme();
-    applyTheme(resolveTheme(storedTheme));
-    return storedTheme;
-  });
+  const [theme, setTheme] = useState<Theme>(getStoredTheme);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (

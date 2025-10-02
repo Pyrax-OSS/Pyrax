@@ -6,15 +6,11 @@ import {
 } from "@/components/Typography";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import type { Theme } from "@/utils/theme";
-import { getStoredTheme, applyTheme, resolveTheme } from "@/utils/theme";
+import { getStoredTheme } from "@/utils/theme";
 import axios from "axios";
 
 export default function Home() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const storedTheme = getStoredTheme();
-    applyTheme(resolveTheme(storedTheme));
-    return storedTheme;
-  });
+  const [theme, setTheme] = useState<Theme>(getStoredTheme);
 
   const [version, setVersion] = useState("");
 
